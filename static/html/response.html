@@ -1,0 +1,8 @@
+<div class="content">
+  {% for article in response %}
+  <h3>{{article.title}}</h3>
+  <p class="byline">{{article.pubDate}} <a href={{article.link}}>link</a></p>
+  <div>{{article.description}}</div>
+  {% endfor %}
+</div>
+

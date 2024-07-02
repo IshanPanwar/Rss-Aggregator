@@ -1,0 +1,6 @@
+body{color:#e0e0e0;background-color:#100c08;}
+.sidebar{height:100%;width:145px;background-color:#808081;color:#ffffff;position:fixed!important;top:0;left:0;z-index:1;overflow-y:scroll}
+.sidebar p{text-align:center;font-weight:normal;}
+.sidebar h3{text-align:center;}
+.main{padding-left:145px;}
+.byline{color:#d3d3d3;}

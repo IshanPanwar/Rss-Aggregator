@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset='UTF-8'/>
+    <title>RSS aggregator</title>
+    <link rel="stylesheet" href="{% static 'rss-home-style.css' %}" type="text/css">
+    <script>
+      {% for heading, items in responses.items %}
+        {% for item in items %}
+        async function {{item.func}}(){
+          {{item.func}}_reqUrl="{% url 'base' %}request/{{heading}}/{{item.name}}"
+          let {{item.func}}_response = await fetch({{item.func}}_reqUrl);
+          {{item.func}}_response.text().then(function(text){
+            document.getElementById("main").innerHTML = text;
+          });
+        }
+        {% endfor %}
+      {% endfor %}
+    </script>
+  </head>
+  <body>
+    <div class="sidebar">
+      {% for heading, items in responses.items %}
+        <h3><u>{{ heading }}</u></h3>
+        {% for item in items %}
+        <p onClick={{item.func}}()>{{item.name}}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="main" id="main"></div>
+  </body>
+</html>
+
